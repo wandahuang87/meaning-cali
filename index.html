@@ -77,8 +77,31 @@ footer p{font-size:12px;color:#8a8078;line-height:1.8;margin:0}
 .copyright{font-size:11px;color:#c5bfb6;margin-top:20px}
 section{padding-bottom:40px}
 #reviews-sec{border-top:1px solid #e8e3dc;padding-top:40px}
+
+.nav{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:12px;letter-spacing:1.2px;text-transform:uppercase}
+.nav a{text-decoration:none;color:#8a8078;padding-bottom:3px;border-bottom:1px solid transparent}
+.nav a:hover{color:#1a1a1a;border-bottom-color:#c9a87c}
+.studio-frame{position:relative;width:100%;height:660px;border:1px solid #e8e3dc;border-radius:8px;overflow:hidden;background:#fff}
+.studio-frame iframe{width:100%;height:100%;border:0;display:block}
+.studio-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.btn-ghost{display:inline-block;text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:12px 22px;border:1px solid #d9d2c9;border-radius:4px;color:#4a4540;background:#fff}
+.btn-ghost:hover{border-color:#b08d6e;color:#1a1a1a}
+.btn-solid{display:inline-block;text-decoration:none;font-size:12px;letter-spacing:1px;text-transform:uppercase;padding:12px 22px;border-radius:4px;color:#fff;background:#1a1a1a;border:1px solid #1a1a1a}
+.lay-group{margin-bottom:30px}
+.lay-group h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:19px;font-weight:400;margin:0 0 4px}
+.lay-group p.sub{font-size:12px;color:#b0a89e;margin:0 0 16px}
+.lay-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.lay{display:flex;flex-direction:column;justify-content:space-between;border:1px solid #e8e3dc;border-radius:6px;padding:16px 18px;background:#fff;text-decoration:none;color:inherit}
+.lay:hover{border-color:#b08d6e}
+.lay .nm{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;margin-bottom:3px}
+.lay .dim{font-size:11px;color:#b0a89e;letter-spacing:.4px}
+.lay .dl{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#b08d6e;margin-top:12px}
+.callout{background:#f9f7f4;border-radius:6px;padding:20px 24px;font-size:13px;line-height:1.75;color:#5a554e;margin-bottom:28px}
+.callout strong{color:#1a1a1a}
 @media (max-width:640px){
   .product{grid-template-columns:1fr}
+  .studio-frame{height:560px}
+  .nav{gap:16px;font-size:11px}
   .grid2{grid-template-columns:1fr}
   header img.logo{max-width:240px}
   .card{padding:24px}
@@ -95,6 +118,12 @@ section{padding-bottom:40px}
     <span style="color:#d9d2c9">&middot;</span>
     <a href="https://www.instagram.com/meaningtaiwan" target="_blank" rel="noopener">@meaningtaiwan</a>
   </div>
+  <nav class="nav">
+    <a href="#products">Products</a>
+    <a href="#studio">Design Studio</a>
+    <a href="#layouts">Layouts</a>
+    <a href="#order">Order</a>
+  </nav>
 </header>
 
 <div class="intro">
@@ -102,13 +131,51 @@ section{padding-bottom:40px}
   <p class="meta">Production: 3&ndash;8 weeks &middot; Ships from California &middot; All sales final</p>
 </div>
 
-<section class="wrap">
+<section class="wrap" id="products">
   <h2>Our Products</h2>
   <p class="sec-sub">Select quantities to build your order</p>
   <div id="products"></div>
 </section>
 
-<section class="wrap">
+<section class="wrap" id="studio">
+  <h2>Meaning Design Studio</h2>
+  <p class="sec-sub">Design your artwork online &mdash; no software needed</p>
+  <div class="callout">Add your names, wedding date, photos and decorative elements straight onto the real product template. When you are happy with it, export a print-ready file or send it to us directly. <strong>Everything is built on our actual dielines</strong>, so what you design is what gets printed.</div>
+  <div class="studio-frame"><iframe src="https://wandahuang87.github.io/meaning-designstudio/?lang=en" title="Meaning by W Design Studio" loading="lazy" allow="clipboard-write"></iframe></div>
+  <div class="studio-actions">
+    <a class="btn-solid" href="https://wandahuang87.github.io/meaning-designstudio/?lang=en" target="_blank" rel="noopener">Open Studio Full Screen</a>
+    <a class="btn-ghost" href="#layouts">Prefer your own tools?</a>
+  </div>
+</section>
+
+<section class="wrap" id="layouts">
+  <h2>Download Product Layouts</h2>
+  <p class="sec-sub">Print templates for designing in your own software</p>
+  <div class="callout">Every template is the exact cutting die we print from. Design in Illustrator, Photoshop, Canva or any tool you like, keep artwork inside the marked safe area, then email your finished file to <strong>meaningcali@gmail.com</strong>. Send a print-ready PDF at 300&nbsp;dpi with fonts outlined where possible.</div>
+  <div class="lay-group">
+    <h3>Our US collection</h3>
+    <p class="sub">Templates for the products available to US couples</p>
+    <div class="lay-grid">
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_e126d2a6ed6c49919d60b2201057e754.pdf"><div><div class="nm">Film Camera Wrapper</div><div class="dim">244 &times; 107 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_8250489a7f344964a0708d235afe5138.pdf"><div><div class="nm">Weekend Incense Set</div><div class="dim">199 &times; 157 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_7b284344acef4635a94a5181ed3b4061.pdf"><div><div class="nm">Add-on Gift Box</div><div class="dim">156 &times; 108 &times; 40 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_b373c4a78f2344c9887ad47ccf8495c5.pdf"><div><div class="nm">Add-on Box</div><div class="dim">105 &times; 15 &times; 100 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_71b1dbee5759462fa36992a5c40b19e7.pdf"><div><div class="nm">Add-on Card</div><div class="dim">100 &times; 80 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_a2a161428875450f818aed8c01e80e4b.pdf"><div><div class="nm">Film Camera Instructions</div><div class="dim">Insert card</div></div><div class="dl">Download PDF</div></a>
+    </div>
+  </div>
+  <div class="lay-group">
+    <h3>Available on request</h3>
+    <p class="sub">Made for our Taiwan collection &mdash; ask us if you would like these for a US order</p>
+    <div class="lay-grid">
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_92780eae55054cb3864a8a6ec2a1df35.pdf"><div><div class="nm">A Cup of Drip Coffee</div><div class="dim">100 &times; 125 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_44f7c5b180e947c6b133e3a42fb9b4ff.pdf"><div><div class="nm">Love Seeds Card</div><div class="dim">80 &times; 120 mm</div></div><div class="dl">Download PDF</div></a>
+      <a class="lay" target="_blank" rel="noopener" href="https://www.meaningtaiwan.info/_files/ugd/0993b7_f8c31845b86849b7afe4ea73096fce63.pdf"><div><div class="nm">Tears-off Pocket Tissue</div><div class="dim">403 &times; 230 mm</div></div><div class="dl">Download PDF</div></a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="order">
   <div class="card">
     <h2>Your Order</h2>
     <p class="sec-sub">Fill in your details and download your order form</p>
@@ -126,7 +193,7 @@ section{padding-bottom:40px}
       <div class="sum-total"><span class="lbl">Estimated Total</span><span class="val" id="sum-total">$0.00</span></div>
       <p class="note">Final pricing confirmed after design consultation</p>
     </div>
-    <button id="download" class="full" disabled>Download Order Form</button>
+    <button id="download" class="full" disabled>Download Order Form (PDF)</button>
     <p id="dl-success" class="success" style="display:none">Order form downloaded. Please email it to meaningcali@gmail.com</p>
     <p class="helper">Download your order form and email it to <strong>meaningcali@gmail.com</strong><br>Or share it with your wedding planner &mdash; they'll forward it to us.</p>
   </div>
@@ -350,13 +417,18 @@ function init(){
   });
 
   document.getElementById('download').addEventListener('click', function(){
-    var blob = new Blob([orderText()], {type:'text/plain'});
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'Meaning-Order-' + (document.getElementById('cname').value.trim() || 'Form') + '.txt';
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    var pdf=null;
+    try{ pdf=buildOrderPDF(); }catch(err){ pdf=null; }
+    var nm=(document.getElementById('cname').value.trim()||'Form').replace(/[^\w\-]+/g,'-');
+    if(pdf){ pdf.save('Meaning-by-W-Order-'+nm+'.pdf'); }
+    else {
+      var blob = new Blob([orderText()], {type:'text/plain'});
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = 'Meaning-Order-'+nm+'.txt';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
     var s = document.getElementById('dl-success');
     s.style.display = 'block';
     setTimeout(function(){ s.style.display = 'none'; }, 5000);
@@ -430,6 +502,78 @@ function init(){
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
 else init();
 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+var STUDIO_URL="https://meaning-cali.pages.dev/#studio";
+var LAYOUTS_URL="https://meaning-cali.pages.dev/#layouts";
+var INK=[26,26,26],MUTED=[138,128,120],LINE=[216,208,198],CREAM=[249,247,244],GOLD=[176,141,110];
+function buildOrderPDF(){
+ var J=(window.jspdf&&window.jspdf.jsPDF)||window.jsPDF; if(!J) return null;
+ var doc=new J({unit:"mm",format:"a4"}); var W=210,M=20,y=0;
+ function g(id){var e=document.getElementById(id);return e?e.value.trim():"";}
+ function F(f,s,sz,c){doc.setFont(f,s);doc.setFontSize(sz);doc.setTextColor(c[0],c[1],c[2]);}
+ function rule(yy){doc.setDrawColor(LINE[0],LINE[1],LINE[2]);doc.setLineWidth(0.2);doc.line(M,yy,W-M,yy);}
+ function sp(t,x,yy,gp){var cx=x;for(var k=0;k<t.length;k++){doc.text(t[k],cx,yy);cx+=doc.getTextWidth(t[k])+gp;}}
+ y=18;
+ if(window.IMG&&window.IMG.logo){try{var lw=38,lh=lw*(181/300);doc.addImage(window.IMG.logo,"PNG",(W-lw)/2,y,lw,lh);y+=lh+5;}catch(e){y+=6;}}
+ F("times","italic",10,MUTED);
+ doc.text("Custom wedding keepsakes, designed to hold your memories",W/2,y,{align:"center"});
+ y+=10; rule(y); y+=9;
+ F("helvetica","normal",8,MUTED); sp("ORDER FORM",M,y,0.7);
+ doc.text(new Date().toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}),W-M,y,{align:"right"});
+ y+=8; F("helvetica","normal",7.5,MUTED); sp("CLIENT INFORMATION",M,y,0.6); y+=5.5;
+ var fl=[["Name",g("cname")],["Email",g("cemail")],["Wedding Date",g("wdate")],["Guest Count",g("guests")],["Referred By",g("refby")]].filter(function(f){return f[1];});
+ var cx=[M,M+90],RW=11;
+ fl.forEach(function(f,k){var x=cx[k%2],yy=y+Math.floor(k/2)*RW;
+  F("helvetica","normal",7,MUTED);doc.text(f[0],x,yy);
+  F("times","normal",11,INK);doc.text(String(f[1]),x,yy+5);});
+ y+=Math.ceil(fl.length/2)*RW+4; rule(y); y+=9;
+ F("helvetica","normal",7.5,MUTED); sp("YOUR ORDER",M,y,0.6); y+=7;
+ var items=currentOrder(), km={}; PRODUCTS.forEach(function(p){km[p.name]=p.img;});
+ items.forEach(function(it){
+  if(y+23>252){doc.addPage();y=25;}
+  var key=km[it.name],tw=19;
+  if(key&&window.IMG&&window.IMG[key]){try{doc.addImage(window.IMG[key],"JPEG",M,y,tw,tw);}catch(e){}}
+  var tx=M+tw+7;
+  F("times","normal",12.5,INK);doc.text(it.name,tx,y+7);
+  F("helvetica","normal",8,MUTED);doc.text(it.qty+" units  x  $"+it.price.toFixed(2),tx,y+13.5);
+  F("times","normal",13,INK);doc.text("$"+(it.price*it.qty).toFixed(2),W-M,y+10,{align:"right"});
+  y+=23; doc.setDrawColor(LINE[0],LINE[1],LINE[2]);doc.setLineWidth(0.15);doc.line(M,y-3,W-M,y-3);});
+ y+=3; var tot=items.reduce(function(s,i2){return s+i2.price*i2.qty;},0);
+ doc.setFillColor(CREAM[0],CREAM[1],CREAM[2]); doc.rect(M,y,W-2*M,16,"F");
+ F("helvetica","normal",7.5,MUTED); sp("ESTIMATED TOTAL",M+6,y+7.5,0.6);
+ F("times","normal",18,INK); doc.text("$"+tot.toFixed(2),W-M-6,y+11,{align:"right"});
+ y+=16; F("helvetica","normal",7,MUTED);
+ doc.text("Final pricing confirmed after design consultation",W-M,y+4.5,{align:"right"}); y+=10;
+ if(g("notes")){ if(y>232){doc.addPage();y=25;}
+  F("helvetica","normal",7.5,MUTED); sp("NOTES & SPECIAL REQUESTS",M,y,0.6); y+=5.5;
+  F("times","normal",10.5,INK); var ln=doc.splitTextToSize(g("notes"),W-2*M);
+  doc.text(ln,M,y+3); y+=ln.length*5+8; }
+ if(y>212){doc.addPage();y=25;}
+ rule(y); y+=9; F("helvetica","normal",7.5,MUTED); sp("DESIGN YOUR ARTWORK",M,y,0.6); y+=6;
+ F("times","italic",10,MUTED); doc.text("Two ways to create your design - choose whichever suits you.",M,y+3); y+=11;
+ var bw=(W-2*M-6)/2,bh=30;
+ doc.setDrawColor(LINE[0],LINE[1],LINE[2]);doc.setLineWidth(0.3);doc.rect(M,y,bw,bh);
+ F("times","normal",12,INK); doc.text("Meaning Design Studio",M+6,y+9);
+ F("helvetica","normal",7.5,MUTED);
+ doc.text(doc.splitTextToSize("Design online in your browser. Add text, photos and decorative elements, then send it straight to us.",bw-12),M+6,y+15);
+ F("helvetica","normal",7.5,GOLD); doc.textWithLink("Open the Studio  >",M+6,y+25.5,{url:STUDIO_URL});
+ doc.rect(M+bw+6,y,bw,bh);
+ F("times","normal",12,INK); doc.text("Download Product Layouts",M+bw+12,y+9);
+ F("helvetica","normal",7.5,MUTED);
+ doc.text(doc.splitTextToSize("Prefer your own tools? Download the print template for each product and design in Illustrator, Canva or Photoshop.",bw-12),M+bw+12,y+15);
+ F("helvetica","normal",7.5,GOLD); doc.textWithLink("Download Layouts  >",M+bw+12,y+25.5,{url:LAYOUTS_URL});
+ y+=bh+10; if(y>250){doc.addPage();y=25;}
+ rule(y); y+=8; F("helvetica","normal",7.5,MUTED); sp("NEXT STEP",M,y,0.6); y+=5.5;
+ F("times","normal",11,INK); doc.text("Email this form to meaningcali@gmail.com",M,y+3);
+ F("helvetica","normal",8,MUTED);
+ doc.text("Or share it with your wedding planner and they will forward it on your behalf.",M,y+9); y+=16;
+ F("helvetica","normal",7.5,MUTED);
+ doc.text("All items are made to order  -  Production 3-8 weeks  -  Ships from California  -  All sales final",W/2,y,{align:"center"});
+ doc.text("meaningcali@gmail.com   -   @meaning.cali",W/2,y+5,{align:"center"});
+ return doc;
+}
 </script>
 </body>
 </html>
