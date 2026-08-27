@@ -253,19 +253,19 @@ var REVIEW_CODE = "2022";
 
 var PRODUCTS = [
   { id:"camera", img:"camera", name:"Custom Disposable Film Camera",
-    sub:"with NFC Sharing \u00b7 36 Exposures", price:40, unit:"per camera", minq:10,
+    sub:"with NFC Sharing \u00b7 36 Exposures", price:45, unit:"per camera", minq:10,
     desc:"Fully custom printed disposable film camera with built-in flash, battery, and NFC sticker for instant digital photo sharing. Each camera body is personalized with your names, date, and artwork.",
     feats:["36 exposures preloaded","Built-in flash + battery","Full-wrap custom print","NFC tap-to-share"] },
   { id:"incense", img:"incense", name:"Personalized Wedding Incense Favors",
-    sub:"Scented Sticks with Ceramic Holder", price:10, unit:"per set", minq:20,
+    sub:"Scented Sticks with Ceramic Holder", price:15, unit:"per set", minq:20,
     desc:"A quiet, sensory guest favor \u2014 scented incense sticks paired with a ceramic holder, presented in custom packaging illustrated with you and your partner.",
     feats:["Scented incense sticks","Ceramic holder","Custom illustrated box","Multiple scent options"] },
   { id:"airfreshener", img:"airfresh", name:"Wedding Air Freshener Favors",
-    sub:"Illustrated Car Scent \u00b7 Bridal Gift", price:9, unit:"per piece", minq:20,
+    sub:"Illustrated Car Scent \u00b7 Bridal Gift", price:13, unit:"per piece", minq:20,
     desc:"A custom illustrated car air freshener featuring your own couple portrait \u2014 an unexpected favor your guests will actually keep and use long after the day.",
     feats:["Custom couple illustration","Long-lasting scent","Individually packaged","Unique keepsake"] },
   { id:"giftbox", img:"giftbox", name:"Custom Wedding Guest Gift Box",
-    sub:"Personalized Favor Packaging", price:20, unit:"per box", minq:10,
+    sub:"Personalized Favor Packaging", price:0, unit:"quoted by volume", minq:10,
     desc:"A complete curated gift set in custom printed packaging \u2014 personalized with your names, date, and illustration. Pair it with any of our favors to build your own welcome box.",
     feats:["Fully custom printed","Curated gift set","Multiple size options","Premium matte finish"] }
 ];
@@ -293,7 +293,7 @@ function renderProducts(){
       + '<p class="p-desc">'+esc(p.desc)+'</p>'
       + '<div class="feats">'+feats+'</div></div>'
       + '<div><div class="p-foot">'
-      + '<div><span class="price">$'+p.price+'</span><span class="unit">'+esc(p.unit)+'</span></div>'
+      + '<div>'+(p.price>0?'<span class="price">$'+p.price+'</span>':'<span class="price" style="font-size:19px">By request</span>')+'<span class="unit">'+esc(p.unit)+'</span></div>'
       + '<div class="qty-wrap"><label for="qty-'+p.id+'">QTY</label>'
       + '<input type="number" min="0" step="1" id="qty-'+p.id+'" class="qty" placeholder="0"'
       + ' data-price="'+p.price+'" data-name="'+esc(p.name)+'"></div>'
@@ -350,7 +350,7 @@ function updateSummary(){
     box.style.display = 'block';
     document.getElementById('sum-rows').innerHTML = items.map(function(i){
       return '<div class="sum-row"><span>'+esc(i.name)+' \u00d7 '+i.qty+'</span>'
-        + '<span style="font-weight:500">$'+(i.price*i.qty).toFixed(2)+'</span></div>';
+        + '<span style="font-weight:500">'+(i.price>0?'$'+(i.price*i.qty).toFixed(2):'Quoted')+'</span></div>';
     }).join('');
     var total = items.reduce(function(s,i){ return s + i.price*i.qty; }, 0);
     document.getElementById('sum-total').textContent = '$' + total.toFixed(2);
@@ -483,26 +483,60 @@ function init(){
   });
 
   document.getElementById('submit-review').addEventListener('click', function(){
-    REVIEWS.unshift({
+    var btn = document.getElementById('submit-review');
+    var payload = {
+      code: document.getElementById('code').value.trim(),
       name: document.getElementById('rname').value.trim(),
-      date: new Date().toLocaleDateString("en-US",{month:"long",year:"numeric"}),
-      rating: newRating,
       text: document.getElementById('rtext').value.trim(),
-      img: reviewImg,
-      product: document.getElementById('rprod').value
+      rating: newRating,
+      product: document.getElementById('rprod').value,
+      img: reviewImg
+    };
+    btn.disabled = true; btn.textContent = 'Saving...';
+    fetch('/api/reviews', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(res){
+      btn.textContent = 'Submit Review';
+      if (!res || !res.ok) {
+        var e = document.getElementById('code-err');
+        e.textContent = 'Sorry, that could not be saved. Please try again or email meaningcali@gmail.com.';
+        e.style.display = 'block';
+        btn.disabled = false;
+        return;
+      }
+      REVIEWS.unshift(res.review);
+      renderReviews();
+      document.getElementById('rname').value = '';
+      document.getElementById('rtext').value = '';
+      document.getElementById('rprod').value = '';
+      document.getElementById('rpreview').style.display = 'none';
+      reviewImg = null; newRating = 5;
+      document.getElementById('gate').style.display = 'block';
+      document.getElementById('review-form').style.display = 'none';
+      document.getElementById('code').value = '';
+      document.getElementById('code-err').style.display = 'none';
+      var ok = document.createElement('p');
+      ok.className = 'success';
+      ok.textContent = 'Thank you! Your review is now live.';
+      document.getElementById('gate').appendChild(ok);
+      setTimeout(function(){ if(ok.parentNode) ok.parentNode.removeChild(ok); }, 6000);
+    }).catch(function(){
+      btn.textContent = 'Submit Review'; btn.disabled = false;
+      var e = document.getElementById('code-err');
+      e.textContent = 'Network error. Please try again.';
+      e.style.display = 'block';
     });
-    renderReviews();
-    document.getElementById('rname').value = '';
-    document.getElementById('rtext').value = '';
-    document.getElementById('rprod').value = '';
-    document.getElementById('rpreview').style.display = 'none';
-    reviewImg = null; newRating = 5;
-    document.getElementById('submit-review').disabled = true;
-    document.getElementById('gate').style.display = 'block';
-    document.getElementById('review-form').style.display = 'none';
-    document.getElementById('code').value = '';
-    document.getElementById('code-err').style.display = 'none';
   });
+
+  // load saved reviews from storage
+  fetch('/api/reviews').then(function(r){ return r.json(); }).then(function(res){
+    if (res && res.reviews && res.reviews.length) {
+      REVIEWS = res.reviews;
+      renderReviews();
+    }
+  }).catch(function(){});
 }
 
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
